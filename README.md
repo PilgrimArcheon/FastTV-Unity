@@ -20,8 +20,8 @@ This is a Unity-based Android application that allows users to search for movies
 
 ### 1. Clone the Repository
 ```sh
-git clone https://github.com/yourusername/movie-exploration-app.git
-cd movie-exploration-app
+git clone https://github.com/PilgrimArcheon/FastTV-Unity/.git
+cd fast-tv-app
 ```
 
 ### 2. Open in Unity
@@ -33,7 +33,6 @@ cd movie-exploration-app
 Ensure you have the following Unity packages installed:
 - **UnityWebRequest** (for API requests)
 - **TextMeshPro** (for UI text rendering)
-- **Newtonsoft.Json** (for JSON parsing)
 
 ### 4. Get a TMDb API Key
 - Sign up at [The Movie Database](https://www.themoviedb.org/).
@@ -59,14 +58,18 @@ The app follows a **Model-View-Controller (MVC)** pattern for better separation 
 - `MovieList.cs` → Holds a list of movies from search results.
 
 ### **2. View (UI Components)**
-- `MainScene.unity` → Displays search bar and results.
-- `MovieDetailScene.unity` → Shows detailed movie information.
 - `SplashScreen.unity` → Displays app intro.
-
-### **3. Controller (Logic & API Requests)**
-- `MovieAPIManager.cs` → Handles API requests and responses.
-- `UIManager.cs` → Controls UI transitions and animations.
-- `OfflineCache.cs` → Stores past search results for offline access.
+- `MainScene.unity` → Displays search bar and results.
+- `Search/MainScreen` → Shows detailed movies information and search bar.
+- `DetailScreen` → Shows detailed movie information.
+  
+### **3. Controller (Logic, UI & API Requests)**
+- `MovieAPI.cs` → Handles API requests and responses.
+- `MovieSearchController.cs` → Handles Main Search Functions and shows search results using Movie UI Items.
+- `MovieDetailsController.cs` → Displaying movie information details on Movie Item Click.
+- `APIResponseCache.cs` → Stores past search results for offline access.
+- `DoTween & UIContentTween.cs` → Controls UI transitions and animations.
+- `Movie.cs & MovieItem.cs` → Represents a movie data and its Searched Movie UI item.
 
 ---
 
@@ -77,11 +80,11 @@ The app follows a **Model-View-Controller (MVC)** pattern for better separation 
 - **Trade-off**: Simpler setup but requires manual JSON handling.
 
 ### **2. Caching with PlayerPrefs vs. Local Database**
-- **Decision**: Used `PlayerPrefs` for quick storage.
+- **Decision**: Used `PlayerPrefs` & `Application.Persistent` for quick storage.
 - **Trade-off**: Limited storage; SQLite would be better for large-scale offline support.
 
 ### **3. UI Design & Responsiveness**
-- **Decision**: Used Unity’s Canvas with anchors and auto-layout.
+- **Decision**: Used Unity’s Canvas with anchors and auto-layout to allow for Portrait and Landscape Mode & Resolution.
 - **Trade-off**: Scaling works well but can be challenging across different screen sizes.
 
 ### **4. CI/CD with GitHub Actions**
@@ -99,7 +102,6 @@ The app follows a **Model-View-Controller (MVC)** pattern for better separation 
 
 ### **Possible Improvements**
 - **Use SQLite for better offline storage**: Store entire movie details instead of just search results.
-- **Implement Dark Mode**: A UI setting to switch themes.
 - **Include Trailers**: Fetch and play movie trailers using TMDb’s video API.
 - **Improve search suggestions**: Implement predictive search while typing.
 
@@ -111,7 +113,7 @@ The project includes an automated **CI/CD pipeline** using **GitHub Actions** to
 2. **Run unit tests** to ensure stability.
 3. **Generate an APK** and attach it to a GitHub release.
 
-#### **Pipeline YAML File (`.github/workflows/build.yml`)**
+#### **Pipeline YAML File (`.github/workflows/test-build.yml`)**
 ```yaml
 name: Build and Deploy APK
 
@@ -139,11 +141,3 @@ jobs:
           name: MovieApp.apk
           path: Build/Android/*.apk
 ```
-
----
-
-## License
-This project is open-source under the **MIT License**.
-
-**Enjoy building with Unity! 🚀**
-
