@@ -29,11 +29,11 @@ public class SplashScreen : MonoBehaviour
     // Called when the script is initialized
     private void Start()
     {
-        // Get the saved API key from the SaveManager
-        string savedKey = SaveManager.Instance.state.SavedApiKey;
+        // Get the saved API key 
+        string savedKey = PlayerPrefs.GetString("API-KEY");
 
         // If no API key is saved, show the API key prompt
-        if (string.IsNullOrEmpty(savedKey))
+        if (PlayerPrefs.HasKey(savedKey))
         {
             apiKeyPrompt.TweenToPositionY(0);
             apiKeyButton.onClick.AddListener(() => SaveApiKey());
@@ -51,8 +51,8 @@ public class SplashScreen : MonoBehaviour
             if (isValid)
             {
                 // Save the API key input by the user
-                SaveManager.Instance.state.SavedApiKey = apiKeyInput.text;
-                SaveManager.Instance.Save();
+                PlayerPrefs.SetString("API-KEY", apiKeyInput.text);
+                PlayerPrefs.Save();
 
                 // Hide the API key prompt
                 apiKeyPrompt.ResetTweenPos();

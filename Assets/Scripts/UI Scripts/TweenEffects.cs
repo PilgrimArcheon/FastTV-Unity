@@ -14,7 +14,7 @@ public class TweenEffects : MonoBehaviour, IPointerUpHandler, IPointerDownHandle
     [SerializeField] private float jiggleStrength = 10f;
     [SerializeField] private int jiggleVibrato = 10;
     [Space]
-    [Header("Loop")]
+    [Header("Loop")] 
     [SerializeField] private bool loop = true;
     [SerializeField] private int numberOfLoops;
     [SerializeField] private float loopDuration;
