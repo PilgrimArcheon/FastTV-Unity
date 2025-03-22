@@ -7,11 +7,6 @@ using UnityEngine;
 public class APIResponseCache
 {
     /// <summary>
-    /// The internal cache dictionary that stores API responses.
-    /// </summary>
-    private Dictionary<string, string> cache = new Dictionary<string, string>();
-
-    /// <summary>
     /// Attempts to retrieve a cached API response for the given URL.
     /// </summary>
     /// <param name="url">The URL of the API response to retrieve.</param>
@@ -19,7 +14,8 @@ public class APIResponseCache
     /// <returns>True if the response was found in the cache, false otherwise.</returns>
     public bool TryGetResponse(string url, out string response)
     {
-        return cache.TryGetValue(url, out response);
+        response = PlayerPrefs.GetString(url);
+        return PlayerPrefs.HasKey(url);
     }
 
     /// <summary>
@@ -30,10 +26,11 @@ public class APIResponseCache
     public void StoreResponse(string url, string response)
     {
         // Check if the cache already contains a response for the given URL
-        if (!cache.ContainsKey(url))
+        if (!PlayerPrefs.HasKey(url))
         {
-            // Store the response in the cache
-            cache[url] = response;
+            // Store the response in the PlayerPrefs
+            PlayerPrefs.SetString(url, response);
+            PlayerPrefs.Save();
         }
     }
 }

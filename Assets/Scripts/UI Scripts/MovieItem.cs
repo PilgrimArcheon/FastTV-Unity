@@ -42,32 +42,10 @@ public class MovieItem : MonoBehaviour
         // Set the default sprite as a placeholder
         posterImage.sprite = MovieDetailsController.Instance.defSprite;
         // Start loading the movie poster image
-        StartCoroutine(LoadImage("https://image.tmdb.org/t/p/w500" + movie.poster_path));
+
+        StartCoroutine(MovieAPI.Instance.LoadImage(movie, posterImage));
         // Start fading in the movie item
-        StartCoroutine(FadeIn());   
-    }
-
-    // Loads the movie poster image from the specified URL
-    IEnumerator LoadImage(string url)
-    {
-        // Create a UnityWebRequest to load the image
-        UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
-        // Wait for the request to complete
-        yield return request.SendWebRequest();
-
-        // Check if the request was successful
-        if (request.result == UnityWebRequest.Result.Success)
-        {
-            // Get the loaded texture
-            Texture2D texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
-            // Create a sprite from the texture
-            posterImage.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-        }
-        else
-        {
-            // If the request failed, use the default sprite
-            posterImage.sprite = MovieDetailsController.Instance.defSprite;
-        }
+        StartCoroutine(FadeIn());
     }
 
     // Fades in the movie item
@@ -93,6 +71,8 @@ public class MovieItem : MonoBehaviour
     {
         // Scale down the movie item slightly
         transform.localScale = Vector3.one * 0.9f;
+        // Play the UI audio click sound effect
+        AudioManager.Instance.PlayUIAudioClick();
         // Wait for a short duration
         yield return new WaitForSeconds(0.1f);
         // Scale back up to the original size

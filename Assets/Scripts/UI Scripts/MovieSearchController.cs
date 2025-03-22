@@ -7,13 +7,13 @@ public class MovieSearchController : MonoBehaviour
 {
     // Reference to the search input field
     [SerializeField] TMP_InputField searchInput;
-    
+
     // References to the search and close buttons
-    [SerializeField] Button searchButton, closeButton;
-    
+    [SerializeField] Button closeButton;
+
     // Reference to the container for search results
     [SerializeField] Transform resultsContainer;
-    
+
     // Reference to the prefab for a movie item
     [SerializeField] GameObject movieItemPrefab;
 
@@ -22,16 +22,20 @@ public class MovieSearchController : MonoBehaviour
     {
         // Add listeners for search input submission and value changes
         searchInput.onSubmit.AddListener(var => StartCoroutine(SearchMovies()));
-        searchInput.onValueChanged.AddListener(var => StartCoroutine(SearchMovies()));
-        
-        // Add listener for search button click
-        searchButton.onClick.AddListener(() => StartCoroutine(SearchMovies()));
-        
+        searchInput.onValueChanged.AddListener(var => TrySearch());
+
         // Add listener for close button click
         closeButton.onClick.AddListener(() => StartCoroutine(GetMovies()));
-        
+
         // Initialize the movie list
         StartCoroutine(GetMovies());
+    }
+
+    void TrySearch()
+    {
+        // Check if the search input is empty
+        if (string.IsNullOrEmpty(searchInput.text)) StartCoroutine(GetMovies()); // If empty, retrieve the list of movies
+        else StartCoroutine(SearchMovies()); // If not empty, search for movies based on the input query
     }
 
     // Called every frame
@@ -46,7 +50,7 @@ public class MovieSearchController : MonoBehaviour
     {
         // Clear the search input text
         searchInput.text = "";
-        
+
         // Retrieve the list of movies from the API
         yield return MovieAPI.Instance.GetMovies((movies) =>
         {
@@ -56,11 +60,11 @@ public class MovieSearchController : MonoBehaviour
                 Destroy(child.gameObject);
             }
 
-            // Instantiate and populate the movie items
-            foreach (var movie in movies)
+            // Instantiate and populate the movie items with the top 12 movies
+            for (int i = 0; i < 12; i++)
             {
                 GameObject item = Instantiate(movieItemPrefab, resultsContainer);
-                item.GetComponent<MovieItem>().SetMovie(movie);
+                item.GetComponent<MovieItem>().SetMovie(movies[i]);
             }
         });
     }
@@ -70,7 +74,7 @@ public class MovieSearchController : MonoBehaviour
     {
         // Get the trimmed search query
         string query = searchInput.text.Trim();
-        
+
         // If the query is empty, exit the coroutine
         if (string.IsNullOrEmpty(query)) yield break;
 

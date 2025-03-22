@@ -53,6 +53,22 @@ public class Genre
 }
 
 /// <summary>
+/// Represents a response from a movie cast query.
+/// </summary>
+[System.Serializable]
+public class CastResponse
+{
+    /// <summary>
+    /// Unique identifier for the movie.
+    /// </summary>
+    public int id;
+    /// <summary>
+    /// List of cast members in the movie.
+    /// </summary>
+    public List<Cast> cast;
+}
+
+/// <summary>
 /// Represents a cast member in a movie.
 /// </summary>
 [System.Serializable]
@@ -78,6 +94,10 @@ public class Cast
 [System.Serializable]
 public class MovieDetails
 {
+    /// <summary>
+    /// Title of the movie.
+    /// </summary>
+    public int id;
     /// <summary>
     /// Title of the movie.
     /// </summary>

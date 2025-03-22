@@ -12,15 +12,28 @@ public class MovieDetailsController : MonoBehaviour
 
     // UI components for displaying movie details
     [SerializeField] UIContentTween movieDetailsPanel;
-    [SerializeField] TMP_Text titleText, overviewText, ratingText, castingText;
-    [SerializeField] Image posterImage;
-    [SerializeField] public Sprite defSprite;
+    // UI component for the close button
+    [SerializeField] Button closeButton;
+    // UI components for displaying movie details
+    [SerializeField]
+    TMP_Text titleText, // Text component for displaying the movie title
+    overviewText, // Text component for displaying the movie overview
+    ratingText, // Text component for displaying the movie rating
+    castingText, // Text component for displaying the movie casting information
+    genreText; // Text component for displaying the movie genre information
+    [SerializeField] Image posterImage; // Image component for displaying the movie poster
+    [SerializeField] public Sprite defSprite; // Default sprite to display when no poster is available
 
     // Current movie details
     private MovieDetails currentMovie;
 
     // Initialize the singleton instance in the Awake method
-    void Awake() => Instance = this;
+    void Awake()
+    {
+        Instance = this;
+        // Add a listener to the close button's onClick event to close the movie details panel
+        closeButton.onClick.AddListener(() => CloseDetails());
+    }
 
     // Reset the movie details to their default values
     void ResetDetails()
@@ -29,6 +42,8 @@ public class MovieDetailsController : MonoBehaviour
         titleText.text = "MOVIE-TITLE";
         overviewText.text = "MOVIE-OVERVIEW";
         ratingText.text = "Rating: 0.0";
+        genreText.text = "Genres: ";
+        castingText.text = "Cast: \n";
         posterImage.sprite = defSprite;
     }
 
@@ -51,15 +66,18 @@ public class MovieDetailsController : MonoBehaviour
                 currentMovie = details;
 
                 // Update the UI components with the new movie details
-                titleText.text = details.title;
-                overviewText.text = details.overview;
-                ratingText.text = "Rating: " + details.vote_average;
+                titleText.text = currentMovie.title;
+                overviewText.text = currentMovie.overview;
+                ratingText.text = "Rating: " + currentMovie.vote_average;
 
                 // Start a coroutine to load the movie poster image
-                StartCoroutine(LoadImage("https://image.tmdb.org/t/p/w500" + details.poster_path, posterImage));
+                StartCoroutine(MovieAPI.Instance.LoadImage(movie, posterImage));
+
+                // Populate the genre list with the given genre data
+                PopulateGenre(currentMovie.genres);
 
                 // Populate the cast list with the received cast data
-                PopulateCast(details.cast);
+                PopulateCast(currentMovie.cast);
             }
 
             // Animate the movie details panel to its visible position
@@ -70,11 +88,8 @@ public class MovieDetailsController : MonoBehaviour
     // Populate the cast list with the given cast data
     private void PopulateCast(List<Cast> cast)
     {
-        // Log the received cast data for debugging purposes
-        Debug.Log(cast);
-
         // Initialize the cast text with a header
-        castingText.text = "CASTS: \n";
+        castingText.text = "Cast: \n";
 
         // Check if the cast list is not empty
         if (cast.Count > 0)
@@ -82,28 +97,55 @@ public class MovieDetailsController : MonoBehaviour
             // Iterate over the first 5 cast members and add them to the cast text
             for (int i = 0; i <= 5; i++)
             {
-                castingText.text += $"{cast[i].name} as {cast[i].character} \n";
+                castingText.text += $"{cast[i].name} as {cast[i].character}";
+
+                if (i + 1 < cast.Count && i + 1 < 5) castingText.text += ", \n";
+
+                if (i + 1 == cast.Count || i + 1 >= 5)
+                {
+                    // Add a period at the end of the cast text
+                    castingText.text += ".";
+                    break;
+                }
             }
         }
     }
 
-    // Load an image from the given URL and set it as the sprite for the target image
-    private IEnumerator LoadImage(string url, Image targetImage)
+    // Populate the genre list with the given cast data
+    private void PopulateGenre(List<Genre> genres)
     {
-        // Create a UnityWebRequest to load the image
-        UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
+        // Initialize the genre text with a header
+        genreText.text = "Genre: ";
 
-        // Wait for the request to complete
-        yield return request.SendWebRequest();
-
-        // Check if the request was successful
-        if (request.result == UnityWebRequest.Result.Success)
+        // Check if the genre list is not empty
+        if (genres.Count > 0)
         {
-            // Get the loaded texture from the request
-            Texture2D texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
+            // Iterate over the first 3 genres and add them to the genre text
+            for (int i = 0; i <= 3; i++)
+            {
+                // Add the genre name to the genre text
+                genreText.text += $"{genres[i].name}";
 
-            // Create a new sprite from the texture and set it as the sprite for the target image
-            targetImage.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+                // Add a comma after each genre except the last one
+                if (i + 1 < genres.Count && i + 1 < 3) genreText.text += ", ";
+
+                // Check if we've reached the last genre in the list
+                // If so, break out of the loop to avoid unnecessary iterations
+                if (i + 1 == genres.Count || i + 1 >= 3)
+                {
+                    // Add a period at the end of the genre text
+                    genreText.text += ".";
+                    break;
+                }
+            }
         }
+    }
+
+    private void CloseDetails()
+    {
+        // Play the UI audio click sound effect
+        AudioManager.Instance.PlayUIAudioClick();
+        // Reset the movie details panel to its initial position
+        movieDetailsPanel.ResetTweenPos();
     }
 }
