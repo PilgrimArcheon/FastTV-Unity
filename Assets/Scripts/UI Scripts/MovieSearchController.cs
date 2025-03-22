@@ -22,7 +22,8 @@ public class MovieSearchController : MonoBehaviour
     {
         // Add listeners for search input submission and value changes
         searchInput.onSubmit.AddListener(var => StartCoroutine(SearchMovies()));
-        searchInput.onValueChanged.AddListener(var => TrySearch());
+        // Add listener for search input value changes to trigger a search or retrieve the movie list
+        // searchInput.onValueChanged.AddListener(var => TrySearch());
 
         // Add listener for close button click
         closeButton.onClick.AddListener(() => StartCoroutine(GetMovies()));
