@@ -115,29 +115,40 @@ The project includes an automated **CI/CD pipeline** using **GitHub Actions** to
 
 #### **Pipeline YAML File (`.github/workflows/test-build.yml`)**
 ```yaml
-name: Build and Deploy APK
+name: Unit-Test-Build project
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
-  build:
+  buildForAllSupportedPlatforms:
+    name: Build for ${{ matrix.targetPlatform }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          - Android # Build an Android .apk standalone app.
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-      
-      - name: Set Up Unity
-        uses: game-ci/unity-builder@v2
+      - uses: actions/checkout@v4
         with:
-          unityVersion: 2021.3.11f1
-      
-      - name: Build APK
-        run: |
-          unity-editor -projectPath . -buildTarget Android -executeMethod BuildScript.PerformBuild
-      
-      - name: Upload APK
-        uses: actions/upload-artifact@v2
+          fetch-depth: 0
+          lfs: true
+      - uses: actions/cache@v3
         with:
-          name: MovieApp.apk
-          path: Build/Android/*.apk
+          path: Library
+          key: Library-${{ matrix.targetPlatform }}
+          restore-keys: Library-
+      - if: matrix.targetPlatform == 'Android'
+        uses: jlumbroso/free-disk-space@v1.3.1
+      - uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: ${{ matrix.targetPlatform }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Build-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
 ```
