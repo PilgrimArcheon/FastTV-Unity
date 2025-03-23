@@ -17,8 +17,6 @@ ScriptsOnlyBuild:
     - UnityEngine.InputSystem.InputSystemObject
     - UnityEngine.InputSystem.RemoteInputPlayerConnection
     - UnityEngine.InputSystem.UI.InputSystemUIInputModule
-    Unity.Recorder.Editor.dll:
-    - UnityEditor.Recorder.RecorderPreferencesSettings
     Unity.TextMeshPro:
     - TMPro.TMP_FontAsset
     - TMPro.TMP_Settings
@@ -130,55 +128,55 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 19162}
+      Script: {instanceID: 16586}
     - Class: 114
-      Script: {instanceID: 19724}
+      Script: {instanceID: 18392}
     - Class: 114
-      Script: {instanceID: 19820}
+      Script: {instanceID: 18758}
     - Class: 114
-      Script: {instanceID: 19974}
+      Script: {instanceID: 18826}
     - Class: 114
-      Script: {instanceID: 20412}
+      Script: {instanceID: 18908}
     - Class: 114
-      Script: {instanceID: 20504}
+      Script: {instanceID: 19218}
     - Class: 114
-      Script: {instanceID: 21080}
+      Script: {instanceID: 19278}
     - Class: 114
-      Script: {instanceID: 21608}
+      Script: {instanceID: 19676}
     - Class: 114
-      Script: {instanceID: 22076}
+      Script: {instanceID: 20016}
     - Class: 114
-      Script: {instanceID: 22944}
+      Script: {instanceID: 20328}
     - Class: 114
-      Script: {instanceID: 23328}
+      Script: {instanceID: 20940}
     - Class: 114
-      Script: {instanceID: 24140}
+      Script: {instanceID: 21722}
     - Class: 114
-      Script: {instanceID: 24424}
+      Script: {instanceID: 21918}
     - Class: 114
-      Script: {instanceID: 24532}
+      Script: {instanceID: 21974}
     - Class: 114
-      Script: {instanceID: 24596}
+      Script: {instanceID: 22018}
     - Class: 114
-      Script: {instanceID: 25036}
+      Script: {instanceID: 22318}
     - Class: 114
-      Script: {instanceID: 25112}
+      Script: {instanceID: 22366}
     - Class: 114
-      Script: {instanceID: 25344}
+      Script: {instanceID: 22510}
     - Class: 114
-      Script: {instanceID: 25676}
+      Script: {instanceID: 22706}
     - Class: 114
-      Script: {instanceID: 26304}
+      Script: {instanceID: 23106}
     - Class: 114
-      Script: {instanceID: 26764}
+      Script: {instanceID: 23402}
     - Class: 114
-      Script: {instanceID: 26848}
+      Script: {instanceID: 23450}
     - Class: 114
-      Script: {instanceID: 26998}
+      Script: {instanceID: 23536}
     - Class: 114
-      Script: {instanceID: 27662}
+      Script: {instanceID: 23952}
     - Class: 114
-      Script: {instanceID: 28066}
+      Script: {instanceID: 24204}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -223,47 +221,47 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 18768}
+      Script: {instanceID: 16586}
     - Class: 114
-      Script: {instanceID: 19162}
+      Script: {instanceID: 18392}
     - Class: 114
-      Script: {instanceID: 19724}
+      Script: {instanceID: 18758}
     - Class: 114
-      Script: {instanceID: 19820}
+      Script: {instanceID: 18826}
     - Class: 114
-      Script: {instanceID: 19974}
+      Script: {instanceID: 18908}
     - Class: 114
-      Script: {instanceID: 21080}
+      Script: {instanceID: 19676}
     - Class: 114
-      Script: {instanceID: 21608}
+      Script: {instanceID: 20016}
     - Class: 114
-      Script: {instanceID: 21846}
+      Script: {instanceID: 20186}
     - Class: 114
-      Script: {instanceID: 22076}
+      Script: {instanceID: 20328}
     - Class: 114
-      Script: {instanceID: 22944}
+      Script: {instanceID: 20940}
     - Class: 114
-      Script: {instanceID: 23328}
+      Script: {instanceID: 21222}
     - Class: 114
-      Script: {instanceID: 23348}
+      Script: {instanceID: 21974}
     - Class: 114
-      Script: {instanceID: 24532}
+      Script: {instanceID: 22126}
     - Class: 114
-      Script: {instanceID: 24756}
+      Script: {instanceID: 22950}
     - Class: 114
-      Script: {instanceID: 26052}
+      Script: {instanceID: 23106}
     - Class: 114
-      Script: {instanceID: 26304}
+      Script: {instanceID: 23402}
     - Class: 114
-      Script: {instanceID: 26764}
+      Script: {instanceID: 23450}
     - Class: 114
-      Script: {instanceID: 26848}
+      Script: {instanceID: 23536}
     - Class: 114
-      Script: {instanceID: 26998}
+      Script: {instanceID: 23952}
     - Class: 114
-      Script: {instanceID: 27662}
+      Script: {instanceID: 24204}
     - Class: 114
-      Script: {instanceID: 28066}
+      Script: {instanceID: 26058}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -283,16 +281,16 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: 2a4bf9bfa4fc85b7c3fd76767f844af6
-    assemblyName: DOTween.dll
-    namespaceName: DG.Tweening.Core
-    className: DOTweenComponent
+      Hash: 38f0d470cc4fddbf296d640e7c817028
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: UIContentTween
   - hash:
       serializedVersion: 2
-      Hash: 4f1dec93fa2a0b0e7b8b47518da31b1c
-    assemblyName: DOTween.dll
-    namespaceName: DG.Tweening.Core
-    className: DOTweenSettings
+      Hash: 2822355be70fd74552c7d93f5cdb9b0a
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: TweenEffects
   - hash:
       serializedVersion: 2
       Hash: 7e93247d600e115dac0cdd880de94e99
@@ -481,12 +479,6 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 2822355be70fd74552c7d93f5cdb9b0a
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: TweenEffects
-  - hash:
-      serializedVersion: 2
       Hash: 1a680d9a08de79b0d2c779e78c9843b4
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -635,12 +627,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TMP_SubMesh
-  - hash:
-      serializedVersion: 2
-      Hash: 38f0d470cc4fddbf296d640e7c817028
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: UIContentTween
   - hash:
       serializedVersion: 2
       Hash: c933b590b3badb5918fa01e73cd5cc0c
@@ -965,6 +951,18 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: TestResultRendererCallback
+  - hash:
+      serializedVersion: 2
+      Hash: 4f1dec93fa2a0b0e7b8b47518da31b1c
+    assemblyName: DOTween.dll
+    namespaceName: DG.Tweening.Core
+    className: DOTweenSettings
+  - hash:
+      serializedVersion: 2
+      Hash: 2a4bf9bfa4fc85b7c3fd76767f844af6
+    assemblyName: DOTween.dll
+    namespaceName: DG.Tweening.Core
+    className: DOTweenComponent
   platform: 13
   scenePathNames:
   - Assets/Scene/SplashScreen.unity

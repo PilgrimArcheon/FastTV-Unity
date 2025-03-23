@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.InputSystem;
 
 public class SplashScreen : MonoBehaviour
 {
