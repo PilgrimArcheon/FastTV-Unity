@@ -4,7 +4,7 @@
     "type": "COMPATIBLE_SCREEN_MANIFEST",
     "kind": "Directory"
   },
-  "applicationId": "com.FastTV.AndroidTV",
+  "applicationId": "com.FastTV.FastTV_Android",
   "variantName": "release",
   "elements": []
 }

@@ -969,4 +969,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scene/SplashScreen.unity
   - Assets/Scene/MainScene.unity
-  playerPath: C:/Users/user/Documents/FastTV-Unity/FastTV-Unity.apk
+  playerPath: C:/Users/user/Documents/FastTV-Unity/FastTV-Android.apk

@@ -4,7 +4,7 @@
     "type": "MERGED_MANIFESTS",
     "kind": "Directory"
   },
-  "applicationId": "com.FastTV.AndroidTV",
+  "applicationId": "com.FastTV.FastTV_Android",
   "variantName": "release",
   "elements": [
     {
