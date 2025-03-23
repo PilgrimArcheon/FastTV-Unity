@@ -27,7 +27,7 @@ public class MovieAPI : MonoBehaviour
         Instance = this;
 
         // Load the saved API key
-        apiKey = PlayerPrefs.GetString("API-KEY");
+        apiKey = PlayerPrefs.GetString("API_KEY");
 
         // Initialize the cache
         cache = new APIResponseCache();
