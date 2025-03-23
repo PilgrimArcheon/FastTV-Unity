@@ -23,7 +23,7 @@ public class MovieSearchController : MonoBehaviour
         // Add listeners for search input submission and value changes
         searchInput.onSubmit.AddListener(var => StartCoroutine(SearchMovies()));
         // Add listener for search input value changes to trigger a search or retrieve the movie list
-        // searchInput.onValueChanged.AddListener(var => TrySearch());
+        searchInput.onValueChanged.AddListener(var => TrySearch());
 
         // Add listener for close button click
         closeButton.onClick.AddListener(() => StartCoroutine(GetMovies()));
@@ -36,7 +36,7 @@ public class MovieSearchController : MonoBehaviour
     {
         // Check if the search input is empty
         if (string.IsNullOrEmpty(searchInput.text)) StartCoroutine(GetMovies()); // If empty, retrieve the list of movies
-        else StartCoroutine(SearchMovies()); // If not empty, search for movies based on the input query
+        //else StartCoroutine(SearchMovies()); // If not empty, search for movies based on the input query
     }
 
     // Called every frame

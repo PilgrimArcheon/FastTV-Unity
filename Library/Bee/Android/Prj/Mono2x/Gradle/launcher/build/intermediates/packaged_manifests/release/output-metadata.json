@@ -4,7 +4,7 @@
     "type": "PACKAGED_MANIFESTS",
     "kind": "Directory"
   },
-  "applicationId": "com.FastTV.FastTV_Android",
+  "applicationId": "com.FastTV.FastTV",
   "variantName": "release",
   "elements": [
     {

@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: FastTV
-  productName: FastTV_Android
+  productName: FastTV
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.12941177, g: 0.12941177, b: 0.12941177, a: 1}
@@ -163,7 +163,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.FastTV.FastTV_Android
+    Android: com.FastTV.FastTV
   buildNumber:
     Standalone: 0
     VisionOS: 0

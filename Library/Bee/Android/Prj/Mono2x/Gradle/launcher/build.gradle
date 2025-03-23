@@ -18,7 +18,7 @@ android {
     defaultConfig {
         minSdkVersion 22
         targetSdkVersion 34
-        applicationId 'com.FastTV.FastTV_Android'
+        applicationId 'com.FastTV.FastTV'
         ndk {
             abiFilters 'armeabi-v7a'
         }
