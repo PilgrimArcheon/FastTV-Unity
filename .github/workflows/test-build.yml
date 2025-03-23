@@ -33,4 +33,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: FastTv-${{ matrix.targetPlatform }}
-          path: ${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
