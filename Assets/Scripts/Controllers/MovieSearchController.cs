@@ -62,10 +62,16 @@ public class MovieSearchController : MonoBehaviour
             }
 
             // Instantiate and populate the movie items with the top 12 movies
-            for (int i = 0; i < 12; i++)
+            // for (int i = 0; i < 12; i++)
+            // {
+            //     GameObject item = Instantiate(movieItemPrefab, resultsContainer);
+            //     item.GetComponent<MovieItem>().SetMovie(movies[i]);
+            // }
+
+            foreach (var movie in movies)
             {
                 GameObject item = Instantiate(movieItemPrefab, resultsContainer);
-                item.GetComponent<MovieItem>().SetMovie(movies[i]);
+                item.GetComponent<MovieItem>().SetMovie(movie);
             }
         });
     }

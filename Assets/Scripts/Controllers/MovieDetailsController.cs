@@ -1,9 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Networking;
 using TMPro;
-using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 
 public class MovieDetailsController : MonoBehaviour
 {
@@ -12,6 +11,10 @@ public class MovieDetailsController : MonoBehaviour
 
     // UI components for displaying movie details
     [SerializeField] UIContentTween movieDetailsPanel;
+    // UI component for holding the movie details content
+    [SerializeField] RectTransform detailsHolder;
+    // The initial anchored position of the details holder on the y-axis
+    [SerializeField] float detailsAnchoredStart = 500f; 
     // UI component for the close button
     [SerializeField] Button closeButton;
     // UI components for displaying movie details
@@ -82,6 +85,7 @@ public class MovieDetailsController : MonoBehaviour
 
             // Animate the movie details panel to its visible position
             movieDetailsPanel.TweenToPositionX(0);
+            detailsHolder.anchoredPosition = new UnityEngine.Vector2(0, detailsAnchoredStart);
         }));
     }
 
