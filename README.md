@@ -2,7 +2,7 @@
 
 # Movie Exploration App
 
-Download the latest APK: [Fast-TV](https://github.com/PilgrimArcheon/FastTV-Unity/blob/main/FastTV-Android.apk)
+Download the latest APK: [Fast-TV](https://github.com/PilgrimArcheon/FastTV-Unity/releases/)
 
 ## Overview
 This is a Unity-based Android application that allows users to search for movies, view detailed movie information, and explore movie posters using **The Movie Database (TMDb) API**. The app is designed with a responsive UI, smooth transitions, and offline caching for better user experience.
