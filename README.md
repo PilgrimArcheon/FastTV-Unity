@@ -1,4 +1,4 @@
-# FastTV-Unity
+# AndroidTV-Unity
 
 # Movie Exploration App
 
