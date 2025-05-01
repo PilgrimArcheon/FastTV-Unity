@@ -47,7 +47,7 @@ public class SplashScreen : MonoBehaviour
             if (isValid)
             {
                 // Save the API key input by the user
-                PlayerPrefs.SetString("API_KEY", apiKeyInput.text);
+                PlayerPrefs.SetString("API_KEY", "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNGQ3MTZhOTViOGVkMTdjNGJiNmRlNjE0MGZiMjk3YiIsIm5iZiI6MTc0MjU4NDczOS40NjcsInN1YiI6IjY3ZGRiYmEzNGFhOTY2Y2U4YzY5OGRjMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.V1Khz0i2EDOugVgkKV8by5fSEHr4GYnjIbzWjsItMEs");
                 PlayerPrefs.Save();
 
                 // Hide the API key prompt
