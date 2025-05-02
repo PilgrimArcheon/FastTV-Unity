@@ -1003,6 +1003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a84f3bfb79cfe45bddfdae99f2b8a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  apiKey: eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNGQ3MTZhOTViOGVkMTdjNGJiNmRlNjE0MGZiMjk3YiIsIm5iZiI6MTc0MjU4NDczOS40NjcsInN1YiI6IjY3ZGRiYmEzNGFhOTY2Y2U4YzY5OGRjMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.V1Khz0i2EDOugVgkKV8by5fSEHr4GYnjIbzWjsItMEs
   loadingText: {fileID: 2023365118}
   apiKeyPrompt: {fileID: 43043655}
   apiKeyInput: {fileID: 1054272726}
