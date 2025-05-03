@@ -1,6 +1,6 @@
-# AndroidTV-Unity: Fast-TV
+# AndroidTV-Unity
 
-Explore the latest APK release here: [Fast-TV Download](https://github.com/PilgrimArcheon/FastTV-Unity/releases/)
+Explore the latest APK release here: [Android-TV Download](https://github.com/PilgrimArcheon/AndroidTV-Unity/releases/)
 
 ---
 
@@ -150,13 +150,14 @@ jobs:
           targetPlatform: ${{ matrix.targetPlatform }}
       - uses: actions/upload-artifact@v4
         with:
-          name: Build-${{ matrix.targetPlatform }}
+          name: Android-TV-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
 ```
 
 ---
 
 ## 👏 Contributions
-All contributions are welcome. Please submit a pull request or open an issue on [GitHub](https://github.com/PilgrimArcheon/FastTV-Unity).
+All contributions are welcome. 
+Please submit a pull request or open an issue on [GitHub](https://github.com/PilgrimArcheon/AndroidTV-Unity).
 
 ---
