@@ -1,121 +1,121 @@
-# AndroidTV-Unity
+# AndroidTV-Unity: Fast-TV
 
-# Movie Exploration App
-
-Download the latest APK: [Fast-TV](https://github.com/PilgrimArcheon/FastTV-Unity/releases/)
-
-## Overview
-This is a Unity-based Android application that allows users to search for movies, view detailed movie information, and explore movie posters using **The Movie Database (TMDb) API**. The app is designed with a responsive UI, smooth transitions, and offline caching for better user experience.
-
-## Features
-- **Movie Search**: Users can search for movies by title.
-- **Movie Details**: Click on a movie to see its synopsis, rating, genres, and poster.
-- **Poster Display**: High-quality movie posters are fetched dynamically.
-- **Smooth UI/UX**: Animations and transitions enhance user experience.
-- **Offline Mode**: Recent searches are stored for offline access.
-- **Splash Screen**: Displays an animated introduction.
-- **Error Handling**: Handles network failures and invalid API keys.
+Explore the latest APK release here: [Fast-TV Download](https://github.com/PilgrimArcheon/FastTV-Unity/releases/)
 
 ---
 
-## Setup Instructions
+## 📽️ Overview
+
+**Android-TV** (Unity) is a sleek and responsive Android TV application built with **Unity**. It integrates **The Movie Database (TMDb) API** to let users search and explore movies, view high-quality posters, and read detailed movie information. The app is optimized for fluid navigation and includes offline caching for enhanced usability.
+
+---
+
+## 🚀 Features
+
+- 🔍 **Search**: Find movies instantly by title.
+- 🎬 **Details**: Access movie overviews, ratings, genres, and posters.
+- 🖼️ **Poster Gallery**: Displays high-resolution movie posters.
+- 🎨 **Smooth UI/UX**: Includes animations and screen transitions.
+- 📴 **Offline Support**: Caches recent searches for offline use.
+- 🚨 **Error Handling**: Detects invalid API keys and connection issues.
+- 🎥 **Splash Screen**: Stylish animated app intro.
+
+---
+
+## 🛠️ Setup Instructions
 
 ### 1. Clone the Repository
-```sh
-git clone https://github.com/PilgrimArcheon/FastTV-Unity/.git
+```bash
+git clone https://github.com/PilgrimArcheon/FastTV-Unity.git
 cd fast-tv-app
 ```
 
 ### 2. Open in Unity
-- Open **Unity Hub**.
-- Click **Add Project** and select the cloned folder.
-- Open the project in Unity.
+- Launch **Unity Hub**.
+- Click **Add Project** and select the cloned directory.
 
 ### 3. Install Dependencies
-Ensure you have the following Unity packages installed:
-- **UnityWebRequest** (for API requests)
-- **TextMeshPro** (for UI text rendering)
+Ensure these Unity packages are installed:
+- `UnityWebRequest`
+- `TextMeshPro`
+- `DoTween`
 
 ### 4. Get a TMDb API Key
-- Sign up at [The Movie Database](https://www.themoviedb.org/).
-- Go to your **API settings** and generate an API key.
+- Register at [The Movie Database](https://www.themoviedb.org/).
+- Navigate to API settings and generate your key.
 
-### 5. Enter API Key in Unity
-- Launch the app.
-- On the first run, enter your **TMDb API Key** when prompted.
+### 5. Enter API Key
+- On first app launch, input your TMDb API key when prompted.
 
-### 6. Build and Run on Android
-- Connect an Android device or use an emulator.
-- Go to **File > Build Settings**.
-- Select **Android** and click **Build & Run**.
+### 6. Build & Run on Android
+- Connect your Android device.
+- In Unity: **File > Build Settings > Android > Build & Run**.
 
 ---
 
-## Architecture Overview
+## 🧱 App Architecture
 
-The app follows a **Model-View-Controller (MVC)** pattern for better separation of concerns:
+The app follows an MVC structure:
 
-### **1. Model (Data Handling)**
-- `Movie.cs` → Stores movie details (title, overview, poster URL, etc.).
-- `MovieList.cs` → Holds a list of movies from search results.
+### 🔹 Model
+- `Movie.cs`: Contains movie metadata.
+- `MovieList.cs`: Manages lists of search results.
 
-### **2. View (UI Components)**
-- `SplashScreen.unity` → Displays app intro.
-- `MainScene.unity` → Displays search bar and results.
-- `Search/MainScreen` → Shows detailed movies information and search bar.
-- `DetailScreen` → Shows detailed movie information.
-  
-### **3. Controller (Logic, UI & API Requests)**
-- `MovieAPI.cs` → Handles API requests and responses.
-- `MovieSearchController.cs` → Handles Main Search Functions and shows search results using Movie UI Items.
-- `MovieDetailsController.cs` → Displaying movie information details on Movie Item Click.
-- `APIResponseCache.cs` → Stores past search results for offline access.
-- `DoTween & UIContentTween.cs` → Controls UI transitions and animations.
-- `Movie.cs & MovieItem.cs` → Represents a movie data and its Searched Movie UI item.
+### 🔹 View
+- `SplashScreen.unity`: Startup animation.
+- `MainScene.unity`: Search UI and results.
+- `DetailScreen.unity`: Full movie details.
+
+### 🔹 Controller
+- `MovieAPI.cs`: API request/response logic.
+- `MovieSearchController.cs`: Handles search and results UI.
+- `MovieDetailsController.cs`: Displays selected movie data.
+- `APIResponseCache.cs`: Caches data locally.
+- `UIContentTween.cs`: Controls UI animations.
 
 ---
 
-## Design Decisions & Trade-offs
+## 🎨 Design Decisions
 
-### **1. Using UnityWebRequest vs. External API Libraries**
-- **Decision**: Used `UnityWebRequest` instead of external plugins.
-- **Trade-off**: Simpler setup but requires manual JSON handling.
+### ✅ UnityWebRequest Over External Libraries
+- **Why**: Simpler setup.
+- **Trade-off**: Requires manual JSON handling.
 
-### **2. Caching with PlayerPrefs vs. Local Database**
-- **Decision**: Used `PlayerPrefs` & `Application.Persistent` for quick storage.
-- **Trade-off**: Limited storage; SQLite would be better for large-scale offline support.
+### ✅ PlayerPrefs for Caching
+- **Why**: Quick and easy offline access.
+- **Trade-off**: Limited data storage. Consider SQLite for scalability.
 
-### **3. UI Design & Responsiveness**
-- **Decision**: Used Unity’s Canvas with anchors and auto-layout to allow for Portrait and Landscape Mode & Resolution.
-- **Trade-off**: Scaling works well but can be challenging across different screen sizes.
+### ✅ Responsive UI with Unity Canvas
+- **Why**: Supports different orientations/resolutions.
+- **Trade-off**: May require fine-tuning for TV resolutions.
 
-### **4. CI/CD with GitHub Actions**
-- **Decision**: Integrated CI/CD pipeline for building APKs automatically.
-- **Trade-off**: Slower initial setup but ensures reliability and automation.
-
----
-
-## Known Issues & Possible Improvements
-
-### **Known Issues**
-- **Large API responses take time**: Large search results might slow down loading.
-- **Limited offline data**: Only past searches are stored; full movie details require an internet connection.
-- **Animations may lag on low-end devices**: Can be optimized further.
-
-### **Possible Improvements**
-- **Use SQLite for better offline storage**: Store entire movie details instead of just search results.
-- **Include Trailers**: Fetch and play movie trailers using TMDb’s video API.
-- **Improve search suggestions**: Implement predictive search while typing.
+### ✅ GitHub Actions for CI/CD
+- **Why**: Automates builds and tests.
+- **Trade-off**: Longer setup, but robust release cycle.
 
 ---
 
-## CI/CD Pipeline (GitHub Actions)
-The project includes an automated **CI/CD pipeline** using **GitHub Actions** to:
-1. **Build the project** automatically.
-2. **Run unit tests** to ensure stability.
-3. **Generate an APK** and attach it to a GitHub release.
+## ⚠️ Known Issues
 
-#### **Pipeline YAML File (`.github/workflows/test-build.yml`)**
+- Large TMDb responses can delay results.
+- Offline cache limited to recent searches.
+- Older devices may show lag in transitions.
+
+---
+
+## 💡 Future Enhancements
+
+- Integrate **SQLite** for richer offline storage.
+- Add **movie trailers** using TMDb video API.
+- Implement **auto-suggestions** during search input.
+
+---
+
+## 🔄 CI/CD Pipeline
+
+GitHub Actions automates build, testing, and release:
+
+### `.github/workflows/test-build.yml`
 ```yaml
 name: Unit-Test-Build project
 
@@ -126,10 +126,9 @@ jobs:
     name: Build for ${{ matrix.targetPlatform }}
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
       matrix:
         targetPlatform:
-          - Android # Build an Android .apk standalone app.
+          - Android
     steps:
       - uses: actions/checkout@v4
         with:
@@ -154,3 +153,10 @@ jobs:
           name: Build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
 ```
+
+---
+
+## 👏 Contributions
+All contributions are welcome. Please submit a pull request or open an issue on [GitHub](https://github.com/PilgrimArcheon/FastTV-Unity).
+
+---
