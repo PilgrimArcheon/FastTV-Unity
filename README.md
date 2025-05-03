@@ -26,8 +26,8 @@ Explore the latest APK release here: [Android-TV Download](https://github.com/Pi
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/PilgrimArcheon/FastTV-Unity.git
-cd fast-tv-app
+git clone https://github.com/PilgrimArcheon/AndroidTV-Unity.git
+cd android-tv-app
 ```
 
 ### 2. Open in Unity
